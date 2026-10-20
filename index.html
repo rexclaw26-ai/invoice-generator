@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invoice Generator — Freelance Made Simple</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>🧾 Invoice Generator</h1>
+    <p>Fill in the details → preview instantly → download a professional PDF</p>
+  </header>
+
+  <main>
+    <section class="form-panel">
+      <div class="card">
+        <h2>Your Business</h2>
+        <div class="grid2">
+          <label>Business / Your Name
+            <input id="fromName" placeholder="Rexford Studio" value="Rexford Studio">
+          </label>
+          <label>Email
+            <input id="fromEmail" placeholder="hello@example.com" value="rexford.elliss@gmail.com">
+          </label>
+        </div>
+        <label>Address
+          <input id="fromAddress" placeholder="123 Main St, Houston, TX 77002" value="Houston, TX">
+        </label>
+        <div class="grid2">
+          <label>Phone (optional)
+            <input id="fromPhone" placeholder="+1 (713) 555-0100">
+          </label>
+          <label>Logo URL (optional)
+            <input id="logoUrl" placeholder="https://...">
+          </label>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Client</h2>
+        <div class="grid2">
+          <label>Client Name*
+            <input id="clientName" placeholder="Acme Corp" required>
+          </label>
+          <label>Client Email
+            <input id="clientEmail" placeholder="client@acme.co">
+          </label>
+        </div>
+        <label>Client Address
+          <input id="clientAddress" placeholder="456 Client Ave, Houston, TX">
+        </label>
+      </div>
+
+      <div class="card">
+        <h2>Invoice Details</h2>
+        <div class="grid3">
+          <label>Invoice #
+            <input id="invoiceNumber" value="INV-1001">
+          </label>
+          <label>Issue Date
+            <input id="issueDate" type="date">
+          </label>
+          <label>Due Date
+            <input id="dueDate" type="date">
+          </label>
+        </div>
+        <div class="grid2">
+          <label>Currency
+            <select id="currency">
+              <option value="USD" selected>USD ($)</option>
+              <option value="EUR">EUR (€)</option>
+              <option value="GBP">GBP (£)</option>
+              <option value="CAD">CAD ($)</option>
+            </select>
+          </label>
+          <label>Tax Rate (%)
+            <input id="taxRate" type="number" min="0" max="100" step="0.1" value="0">
+          </label>
+        </div>
+        <label>Payment Terms / Notes
+          <textarea id="notes" rows="2" placeholder="Payment due within 14 days. Bank: ...">Thank you for your business!</textarea>
+        </label>
+      </div>
+
+      <div class="card">
+        <div class="items-header">
+          <h2>Items</h2>
+          <button type="button" class="btn small" id="addItemBtn">+ Add Item</button>
+        </div>
+        <div id="items"></div>
+        <div class="totals">
+          <div><span>Subtotal</span><strong id="subtotalDisplay">$0.00</strong></div>
+          <div><span>Tax</span><strong id="taxDisplay">$0.00</strong></div>
+          <div class="grand"><span>Total</span><strong id="totalDisplay">$0.00</strong></div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" id="downloadBtn">⬇ Download PDF</button>
+        <button class="btn" id="printBtn">🖨 Print</button>
+        <button class="btn ghost" id="resetBtn">Reset</button>
+      </div>
+    </section>
+
+    <section class="preview-panel">
+      <div class="preview-label">Live Preview</div>
+      <div id="preview" class="preview"></div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Built for freelancers • Works offline • No data leaves your browser</span>
+  </footer>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
